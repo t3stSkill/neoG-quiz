@@ -222,6 +222,43 @@ const questions = [
     ],
     a: 'capillary action phenomenon'
   },
-
 ]
 
+// console.log(questions[0].a.length)
+// console.log('\'.MOV\' extension refers usually to what kind of file?')
+
+function welcome() {
+  var userName = readlineSync.question('Enter your user name: ')
+
+  console.log(`Welcome ${userName}
+-------------------------------
+This is a multi-choise question quiz game you have to write the right answer from the options`)
+}
+
+function shuffleArray(array) {
+  // for (var i = array.length - 1; i > 0; i--) {
+  //     var j = Math.floor(Math.random() * (i + 1));
+  //     var temp = array[i];
+  //     array[i] = array[j];
+  //     array[j] = temp;
+  // }
+  const shuffle = () => 0.5 - Math.random();
+
+  const testQuestions = array.map(q => ({
+    ...q,
+    options: q.options.sort(shuffle) // this one shuffles the answers...
+  })).sort(shuffle) // ...and this one shuffles the questions.
+
+  return testQuestions
+
+}
+
+function game() {
+  for (var i = 0; i < questions.length; i++) {
+    console.log(questions[i].id)
+  }
+}
+
+console.log(shuffleArray(questions))
+// console.log(shuffleArray(questions[19].options))
+// game()
